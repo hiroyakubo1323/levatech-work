@@ -10,18 +10,17 @@
 
     </head>
     <body>
-        <!-->ブログページの名前<-->
+        <!--ブログページの名前-->
         <h1 class = "blog-name">Blog Name</h1>
         
-        <!-->ブログ一覧<-->
+        <!--ブログ一覧-->
         <div class="posts">
-            <div class ="post">
-                <h2 class = "title">title1</h2>
-                <p class = "body">This is a sample body</p>
-                
-                <h2 class = "title">title2</h2>
-                <p class = "body">This is a sample body</p>
-            </div>
+             @foreach($posts as $post)
+                <div class ="post">
+                    <h2 class = "title">{{$post->title}}</h2>
+                    <p class = "body">{{$post->body}}</p>
+                </div>
+            @endforeach
         </div>
     </body>
 </html>
