@@ -25,6 +25,10 @@
                     </h2>
                     <p class = "body">{{$post->body}}</p>
                 </div>
+                
+                <div class="edit_button">
+                    <button onclick="location.href='/posts/{{ $post->id }}/edit'">edit</button>
+                </div>
             @endforeach
         </div>
         <div class ="paginate">{{$posts->links()}}</div>

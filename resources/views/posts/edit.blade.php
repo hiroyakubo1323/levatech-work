@@ -14,26 +14,27 @@
     <body>
         <h1 class="Blog">Blog Name</h1>
         
-        <form action="/posts" method="POST">
+        <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
+            @method('PUT')
             <!--タイトル部分-->
             <div class='title'>
                 <h2>Title</h2>
-                <input type="text" name="post[title]" placeholder="タイトル" value={{ old('post.title' )}}>
+                <input type="text" name="post[title]" placeholder="タイトル" value={{ $post->title }}>
                 <p class = 'title__error' style = 'color:red'>{{$errors->first('post.title') }}</p>
             </div>    
                 
             <!--新しい本文-->
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="post[body]" placeholder="今日も一日お疲れさまでした">{{ old('post.body')}}</textarea>
+                <textarea name="post[body]" placeholder="今日も一日お疲れさまでした">{{ $post->body}}</textarea>
                 <p class='body__error' style = 'color:red'>{{$errors ->first('post.body')}}</p>
             </div>
                 
             <div class = "button">
-                <input type="submit" value="store">
+                <input type="submit" value="update">
             </div>
         </form>
-        <a href="/">back</a>
+        <a href="/posts/{{ $post->id }}">back</a>
     </body>
 </html>
