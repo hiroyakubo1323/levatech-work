@@ -13,6 +13,9 @@
         <!--ブログページの名前-->
         <h1 class = "blog-name">Blog Name</h1>
         
+        <!--createボタンの作成-->
+        <a href="/posts/create">create</a>
+        
         <!--ブログ一覧-->
         <div class="posts">
              @foreach($posts as $post)
