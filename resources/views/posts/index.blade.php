@@ -26,11 +26,24 @@
                     <p class = "body">{{$post->body}}</p>
                 </div>
                 
-                <div class="edit_button">
-                    <button onclick="location.href='/posts/{{ $post->id }}/edit'">edit</button>
+                <div class="button">
+                  <form action="/posts/{{ $post->id }}" id="form_{{ $post->id}}" method="post">
+                    @csrf
+                    @method('delete')
+                      <button type="button" onclick='deletePost({{ $post->id}})'>delete</button>
+                  </form>
                 </div>
             @endforeach
         </div>
         <div class ="paginate">{{$posts->links()}}</div>
+        <script>
+            function deletePost(id)
+            {
+                "use srtict"
+                if(confirm("削除すると復元できなくなります.\n本当に削除しますか？")) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </body>
 </html>
